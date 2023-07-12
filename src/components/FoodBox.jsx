@@ -1,5 +1,5 @@
 // Your code here
-export default function FoodBox({ food }) {
+export default function FoodBox({ food, onDeleteItem }) {
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -11,7 +11,7 @@ export default function FoodBox({ food }) {
                 <p><strong>Servings: </strong>{food.servings}</p>
 
                 <div className="card-actions">
-                    <button className="btn btn-primary">Delete</button>
+                    <button onClick={()=> onDeleteItem(food.id)} className="btn btn-primary">Delete</button>
                 </div>
             </div>
         </div>

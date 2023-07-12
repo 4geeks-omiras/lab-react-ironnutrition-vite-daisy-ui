@@ -9,17 +9,23 @@ function App() {
   const [foods, setFoods] = useState([...foodsJson]);
   console.log("🚀 ~ file: App.jsx:8 ~ App ~ foods:", foods)
 
+  const handleDelete = (id) => {
+    console.log("🚀 ~ file: App.jsx:13 ~ handleDelete ~ id:", id)
+    const newFoods = foods.filter(f => f.id !== id);
+    setFoods(newFoods);
+  }
+
 
   return (
     <div className="App">
       <h1>LAB | React IronNutrition</h1>
-      <FoodBox food={{
-        name: "Orange",
-        calories: 85,
-        image: "https://i.imgur.com/abKGOcv.jpg",
-        servings: 1
-      }}
-      />
+      <div className="grid grid-cols-2 gap-4">
+
+        {foods.map(f => (
+          <FoodBox key={f.id} food={f} onDeleteItem={handleDelete}
+          />
+        ))}
+      </div>
     </div>
   );
 }
